@@ -1,0 +1,303 @@
+{
+    "openapi": "3.0.2",
+    "info": {
+        "title": "AMQ",
+        "version": "1.0.0",
+        "description": "API REST per a la gestió de cua MQ"
+    },
+    "paths": {
+        "/amq/queue": {
+            "get": {
+                "parameters": [
+                    {
+                        "examples": {
+                            "Queue Example GET /queue": {
+                                "value": "Q1"
+                            }
+                        },
+                        "name": "queue",
+                        "description": "Nom de la cua AMQ",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "examples": {
+                                    "JSON Response": {
+                                        "value": {
+                                            "firstName": "John",
+                                            "lastName": "Smith",
+                                            "isAlive": true,
+                                            "age": 27,
+                                            "address": {
+                                                "streetAddress": "21 2nd Street",
+                                                "city": "New York",
+                                                "state": "NY",
+                                                "postalCode": "10021-3100"
+                                            },
+                                            "phoneNumbers": [
+                                                {
+                                                    "type": "home",
+                                                    "number": "212 555-1234"
+                                                },
+                                                {
+                                                    "type": "office",
+                                                    "number": "646 555-4567"
+                                                }
+                                            ],
+                                            "children": [
+                                            ]
+                                        }
+                                    }
+                                }
+                            },
+                            "text/xml": {
+                                "examples": {
+                                    "XML Example": {
+                                        "value": "<breakfast_menu>\r\n<food>\r\n<name>Belgian Waffles</name>\r\n<price>$5.95</price>\r\n<description>Two of our famous Belgian Waffles with plenty of real maple syrup</description>\r\n<calories>650</calories>\r\n</food>\r\n<food>\r\n<name>Strawberry Belgian Waffles</name>\r\n<price>$7.95</price>\r\n<description>Light Belgian waffles covered with strawberries and whipped cream</description>\r\n<calories>900</calories>\r\n</food>\r\n<food>\r\n<name>Berry-Berry Belgian Waffles</name>\r\n<price>$8.95</price>\r\n<description>Light Belgian waffles covered with an assortment of fresh berries and whipped cream</description>\r\n<calories>900</calories>\r\n</food>\r\n<food>\r\n<name>French Toast</name>\r\n<price>$4.50</price>\r\n<description>Thick slices made from our homemade sourdough bread</description>\r\n<calories>600</calories>\r\n</food>\r\n<food>\r\n<name>Homestyle Breakfast</name>\r\n<price>$6.95</price>\r\n<description>Two eggs, bacon or sausage, toast, and our ever-popular hash browns</description>\r\n<calories>950</calories>\r\n</food>\r\n</breakfast_menu>"
+                                    }
+                                }
+                            }
+                        },
+                        "description": "Missatge a la cua"
+                    },
+                    "204": {
+                        "$ref": "#/components/responses/204OK"
+                    },
+                    "400": {
+                        "$ref": "#/components/responses/400KO"
+                    },
+                    "500": {
+                        "$ref": "#/components/responses/500KO"
+                    }
+                },
+                "summary": "GET /queue",
+                "description": "Mètode que retorna un missatge des d'una cua"
+            },
+            "post": {
+                "requestBody": {
+                    "description": "Missatge a publicar a la cua",
+                    "content": {
+                        "application/json": {
+                            "examples": {
+                                "JSON Request Example": {
+                                    "value": {
+                                        "firstName": "John",
+                                        "lastName": "Smith",
+                                        "isAlive": true,
+                                        "age": 27,
+                                        "address": {
+                                            "streetAddress": "21 2nd Street",
+                                            "city": "New York",
+                                            "state": "NY",
+                                            "postalCode": "10021-3100"
+                                        },
+                                        "phoneNumbers": [
+                                            {
+                                                "type": "home",
+                                                "number": "212 555-1234"
+                                            },
+                                            {
+                                                "type": "office",
+                                                "number": "646 555-4567"
+                                            }
+                                        ],
+                                        "children": [
+                                        ]
+                                    }
+                                }
+                            }
+                        },
+                        "text/xml": {
+                            "examples": {
+                                "XML Request Example": {
+                                    "value": "<breakfast_menu>\r\n<food>\r\n<name>Belgian Waffles</name>\r\n<price>$5.95</price>\r\n<description>Two of our famous Belgian Waffles with plenty of real maple syrup</description>\r\n<calories>650</calories>\r\n</food>\r\n<food>\r\n<name>Strawberry Belgian Waffles</name>\r\n<price>$7.95</price>\r\n<description>Light Belgian waffles covered with strawberries and whipped cream</description>\r\n<calories>900</calories>\r\n</food>\r\n<food>\r\n<name>Berry-Berry Belgian Waffles</name>\r\n<price>$8.95</price>\r\n<description>Light Belgian waffles covered with an assortment of fresh berries and whipped cream</description>\r\n<calories>900</calories>\r\n</food>\r\n<food>\r\n<name>French Toast</name>\r\n<price>$4.50</price>\r\n<description>Thick slices made from our homemade sourdough bread</description>\r\n<calories>600</calories>\r\n</food>\r\n<food>\r\n<name>Homestyle Breakfast</name>\r\n<price>$6.95</price>\r\n<description>Two eggs, bacon or sausage, toast, and our ever-popular hash browns</description>\r\n<calories>950</calories>\r\n</food>\r\n</breakfast_menu>"
+                                }
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "parameters": [
+                    {
+                        "examples": {
+                            "Address Example GET /queue": {
+                                "value": "address.foo"
+                            }
+                        },
+                        "name": "address",
+                        "description": "Adreça AMQ",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "$ref": "#/components/responses/200OK"
+                    },
+                    "400": {
+                        "$ref": "#/components/responses/400KO"
+                    },
+                    "500": {
+                        "$ref": "#/components/responses/500KO"
+                    }
+                },
+                "summary": "POST /queue",
+                "description": "Mètode que diposita un missatge en una cua"
+            }
+        },
+        "/amq/topic": {
+            "post": {
+                "requestBody": {
+                    "description": "Missatge a publicar al topic",
+                    "content": {
+                        "application/json": {
+                            "examples": {
+                                "JSON Request Example": {
+                                    "value": {
+                                        "firstName": "John",
+                                        "lastName": "Smith",
+                                        "isAlive": true,
+                                        "age": 27,
+                                        "address": {
+                                            "streetAddress": "21 2nd Street",
+                                            "city": "New York",
+                                            "state": "NY",
+                                            "postalCode": "10021-3100"
+                                        },
+                                        "phoneNumbers": [
+                                            {
+                                                "type": "home",
+                                                "number": "212 555-1234"
+                                            },
+                                            {
+                                                "type": "office",
+                                                "number": "646 555-4567"
+                                            }
+                                        ],
+                                        "children": [
+                                        ]
+                                    }
+                                }
+                            }
+                        },
+                        "text/xml": {
+                            "examples": {
+                                "XML Request Example": {
+                                    "value": "<breakfast_menu>\r\n<food>\r\n<name>Belgian Waffles</name>\r\n<price>$5.95</price>\r\n<description>Two of our famous Belgian Waffles with plenty of real maple syrup</description>\r\n<calories>650</calories>\r\n</food>\r\n<food>\r\n<name>Strawberry Belgian Waffles</name>\r\n<price>$7.95</price>\r\n<description>Light Belgian waffles covered with strawberries and whipped cream</description>\r\n<calories>900</calories>\r\n</food>\r\n<food>\r\n<name>Berry-Berry Belgian Waffles</name>\r\n<price>$8.95</price>\r\n<description>Light Belgian waffles covered with an assortment of fresh berries and whipped cream</description>\r\n<calories>900</calories>\r\n</food>\r\n<food>\r\n<name>French Toast</name>\r\n<price>$4.50</price>\r\n<description>Thick slices made from our homemade sourdough bread</description>\r\n<calories>600</calories>\r\n</food>\r\n<food>\r\n<name>Homestyle Breakfast</name>\r\n<price>$6.95</price>\r\n<description>Two eggs, bacon or sausage, toast, and our ever-popular hash browns</description>\r\n<calories>950</calories>\r\n</food>\r\n</breakfast_menu>"
+                                }
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "parameters": [
+                    {
+                        "examples": {
+                            "Address Example POST /topic": {
+                                "value": "address.foo"
+                            }
+                        },
+                        "name": "address",
+                        "description": "Adreça AMQ",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "$ref": "#/components/responses/200OK"
+                    },
+                    "400": {
+                        "$ref": "#/components/responses/400KO"
+                    },
+                    "500": {
+                        "$ref": "#/components/responses/500KO"
+                    }
+                },
+                "summary": "POST /topic",
+                "description": "Mètode que diposita un missatge en un tema"
+            }
+        }
+    },
+    "components": {
+        "responses": {
+            "500KO": {
+                "content": {
+                    "application/json": {
+                        "examples": {
+                            "500 Response": {
+                                "value": {
+                                    "code": "ERR001",
+                                    "reason": "Internal Server Error",
+                                    "message": "Unhandled Error"
+                                }
+                            }
+                        }
+                    }
+                },
+                "description": "Resposta per errors no controlats al servidor"
+            },
+            "400KO": {
+                "content": {
+                    "application/json": {
+                        "examples": {
+                            "400 Response": {
+                                "value": {
+                                    "code": "ERR001",
+                                    "reason": "Bad Request",
+                                    "message": "The 'X' parameter is required"
+                                }
+                            }
+                        }
+                    }
+                },
+                "description": "Resposta pels errors del client a la sol·licitud"
+            },
+            "200OK": {
+                "content": {
+                    "application/json": {
+                        "examples": {
+                            "200 Response": {
+                                "value": {
+                                    "code": "200",
+                                    "reason": "OK",
+                                    "message": "Element Published"
+                                }
+                            }
+                        }
+                    }
+                },
+                "description": "S'ha publicat correctament l'element"
+            },
+            "204OK": {
+                "content": {
+                    "application/json": {
+                        "examples": {
+                            "204 Response": {
+                                "value": {
+                                    "code": "ERR001",
+                                    "reason": "No content",
+                                    "message": "There are no more elements"
+                                }
+                            }
+                        }
+                    }
+                },
+                "description": "Sense resposta de resultats"
+            }
+        }
+    }
+}
